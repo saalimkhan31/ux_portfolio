@@ -1,0 +1,35 @@
+@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Duplet";
+  src: url("./assets/fonts/Duplet-Extrabold-BF642a34066ffff.otf")
+    format("truetype");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Duplet";
+  src: url("./assets/fonts/Duplet-Bold-BF642a3406582e7.otf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Duplet";
+  src: url("./assets/fonts/Duplet-Semibold-BF642a34066f658.otf")
+    format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Duplet";
+  src: url("./assets/fonts/Duplet-Regular-BF642a340663b06.otf")
+    format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
