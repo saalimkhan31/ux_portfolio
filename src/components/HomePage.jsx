@@ -59,7 +59,7 @@ const HomePage = () => {
             }}
             className="tracking-wide text-sm sm:text-base md:text-lg xl:text-xl text-yellow-100"
           >
-            I design products for seamless experiences you'll love.
+            I design products for seamless experience you'll love.
           </p>
         </div>
 
