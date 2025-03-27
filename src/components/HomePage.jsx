@@ -22,7 +22,7 @@ const HomePage = () => {
 
   return (
     <section className="relative bg-[#0B2432] text-white min-h-[100vh] flex items-center justify-center px-4 sm:px-6 md:px-12 lg:px-16 pt-8 sm:pt-12 md:pt-16 lg:pt-20 pb-16 sm:pb-20 md:pb-24">
-      <div className="container mx-auto flex flex-col-reverse md:flex-row items-center gap-6 md:gap-10">
+      <div className="container mx-auto flex flex-col-reverse md:flex-row items-center  md:gap-10">
         {/* Left Side - Text */}
         <div className="w-full md:w-1/2 text-center md:text-left pl-2 sm:pl-4 md:pl-6">
           <h1
@@ -68,7 +68,7 @@ const HomePage = () => {
           <img
             src={myImage}
             alt="Saalim Khan - Product Designer"
-            className="w-40 sm:w-48 md:w-56 lg:w-64 xl:w-102 rounded-xl
+            className="w-40 sm:w-48 md:w-56 lg:w-64 xl:w-120 rounded-xl
                  sm:mt-4 md:mt-0" // Adjust margin-top for small screens
           />
         </div>

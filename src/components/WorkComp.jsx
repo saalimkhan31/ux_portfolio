@@ -5,7 +5,7 @@ const projects = [
     title: "UX Case Study",
     description: "Redesigning a mobile booking app with better UX.",
     image: "/images/project1.jpg",
-    link: "#",
+    link: "/uxcase",
   },
   {
     title: "E-Commerce Website",
