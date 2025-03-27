@@ -1,17 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
-
 import HomePage from "../components/HomePage";
 import Footer from "../components/Footer";
-import ProjectCards from "../components/ProjectCards";
-
+import WorkComp from "../components/WorkComp";
 const Work = () => {
   return (
-    <>
+    <div className="bg-[#0B2432] min-h-screen">
       <HomePage />
-      <ProjectCards />
+      <WorkComp />
       <Footer />
-    </>
+    </div>
   );
 };
 

@@ -2,9 +2,10 @@ import React from "react";
 
 const Resume = () => {
   return (
-    <>
-      <h1>download resume</h1>
-    </>
+    <div className="bg-[#0B2432] min-h-screen pt-20 text-white">
+      <h1>resume</h1>
+      
+    </div>
   );
 };
 

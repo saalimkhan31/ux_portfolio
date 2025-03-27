@@ -21,12 +21,12 @@ const HomePage = () => {
   };
 
   return (
-    <section className="relative bg-[#0B2432] text-white min-h-screen flex items-center justify-center px-4 sm:px-6 md:px-12 lg:px-16 pt-8 sm:pt-12 md:pt-16 lg:pt-20 pb-8">
-      <div className="container mx-auto flex flex-col-reverse md:flex-row items-center gap-6 md:gap-12">
+    <section className="relative bg-[#0B2432] text-white min-h-[100vh] flex items-center justify-center px-4 sm:px-6 md:px-12 lg:px-16 pt-8 sm:pt-12 md:pt-16 lg:pt-20 pb-16 sm:pb-20 md:pb-24">
+      <div className="container mx-auto flex flex-col-reverse md:flex-row items-center gap-6 md:gap-10">
         {/* Left Side - Text */}
-        <div className="w-full md:w-1/2 text-center md:text-left space-y-4 sm:space-y-5 md:space-y-6 pl-2 sm:pl-4 md:pl-6 lg:pl-8 xl:pl-12">
+        <div className="w-full md:w-1/2 text-center md:text-left pl-2 sm:pl-4 md:pl-6">
           <h1
-            className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold leading-tight"
+            className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold leading-tight block py-1.5"
             style={{ fontFamily: "Duplet", fontWeight: 400 }}
           >
             <span className="bg-gradient-to-r from-[#F5F5DC] via-[#D4AF37] to-[#C9B59A] text-transparent bg-clip-text">
@@ -46,18 +46,18 @@ const HomePage = () => {
               WebkitTextFillColor: "transparent",
               display: "inline-block",
             }}
-            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold mt-2 sm:mt-3"
+            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold block py-1.5 leading-tight"
           >
             A Product Designer
           </h2>
 
           <p
+            className="tracking-wide text-sm sm:text-base md:text-lg xl:text-xl text-yellow-100 block py-1.5 leading-snug"
             style={{
               fontFamily: "Duplet",
               fontWeight: 400,
-              letterSpacing: "0.5px",
+              letterSpacing: "0.3px",
             }}
-            className="tracking-wide text-sm sm:text-base md:text-lg xl:text-xl text-yellow-100"
           >
             I design products for seamless experience you'll love.
           </p>
@@ -68,13 +68,14 @@ const HomePage = () => {
           <img
             src={myImage}
             alt="Saalim Khan - Product Designer"
-            className="w-40 sm:w-48 md:w-56 lg:w-[400px] xl:w-[480px] rounded-xl"
+            className="w-40 sm:w-48 md:w-56 lg:w-64 xl:w-102 rounded-xl
+                 sm:mt-4 md:mt-0" // Adjust margin-top for small screens
           />
         </div>
       </div>
 
-      {/* Scroll Down Indicator */}
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-center">
+      {/* Scroll Down Indicator - Always Positioned Away from Text */}
+      {/* <div className="absolute bottom-6 sm:bottom-8 md:bottom-10 left-1/2 transform -translate-x-1/2 text-center">
         <button
           onClick={scrollToWork}
           className="flex flex-col items-center animate-bounce cursor-pointer px-4 py-2 rounded-lg transition-all duration-300"
@@ -97,7 +98,7 @@ const HomePage = () => {
             />
           </svg>
         </button>
-      </div>
+      </div> */}
     </section>
   );
 };

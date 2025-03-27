@@ -4,7 +4,11 @@ export default function Footer() {
       <div className="flex items-center space-x-4">
         <h1
           className="bg-gradient-to-r from-[#FFEBCD] to-[#C9B59A] text-transparent bg-clip-text text-2xl sm:text-3xl font-bold transition-all duration-300"
-          style={{ fontFamily: "Duplet" }}
+          style={{
+            fontFamily: "Duplet",
+            fontWeight: "600",
+            fontSize: "1.5rem",
+          }}
         >
           Saalim Khan
         </h1>
