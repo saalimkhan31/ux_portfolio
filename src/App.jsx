@@ -1,4 +1,9 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import Navbar from "../src/components/Navbar";
 import Work from "./pages/Work";
 import About from "./pages/About";
@@ -13,11 +18,12 @@ function App() {
         {" "}
         {/* Push content down to avoid navbar overlap */}
         <Routes>
+          <Route path="/" element={<Navigate to="/work" replace />} />
           <Route path="/work" element={<Work />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/resume" element={<Resume />} />
-          <Route path="*" element={<Work />} /> {/* Default Route */}
+          {/* <Route path="*" element={<Work />} />  */}
         </Routes>
       </div>
     </Router>

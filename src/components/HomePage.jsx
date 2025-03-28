@@ -14,23 +14,17 @@ const HomePage = () => {
     });
   }, []);
 
-  const scrollToWork = () => {
-    document
-      .getElementById("work-section")
-      .scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
-    <section className="relative bg-[#0B2432] text-white min-h-[100vh] flex items-center justify-center px-4 sm:px-6 md:px-12 lg:px-16 pt-8 sm:pt-12 md:pt-16 lg:pt-20 pb-16 sm:pb-20 md:pb-24">
-      <div className="container mx-auto flex flex-col-reverse md:flex-row items-center  md:gap-10">
+    <section className="relative bg-[#EFECE3] text-[#0000FF] min-h-[100vh] flex items-center justify-center px-4 sm:px-6 md:px-12 lg:px-16 pt-12 sm:pt-12 md:pt-16 lg:pt-20 pb-8 sm:pb-10 md:pb-12">
+      <div className="container mx-auto flex flex-col-reverse md:flex-row items-center md:gap-10">
         {/* Left Side - Text */}
         <div className="w-full md:w-1/2 text-center md:text-left pl-2 sm:pl-4 md:pl-6">
           <h1
-            className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold leading-tight block py-1.5"
+            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight block py-1"
             style={{ fontFamily: "Duplet", fontWeight: 400 }}
           >
-            <span className="bg-gradient-to-r from-[#F5F5DC] via-[#D4AF37] to-[#C9B59A] text-transparent bg-clip-text">
-              I'm Saalim Khan
+            <span className="bg-gradient-to-r from-[#1E3A8A] via-[#0066CC] to-[#003366] text-transparent bg-clip-text">
+              I'm Mohd Saalim
             </span>
           </h1>
 
@@ -40,65 +34,38 @@ const HomePage = () => {
               fontFamily: "Duplet",
               fontWeight: 700,
               backgroundImage:
-                "linear-gradient(90deg, #ff0000, #ff7300, #fffb00, #ffd700, #48ff00, #00ff7f, #87CEEB, #ff1493, #ff69b4, #ff4500, #ff0080",
+                "linear-gradient(90deg, #1E40AF, #2563EB, #3B82F6, #60A5FA, #93C5FD)",
               backgroundSize: "200% auto",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               display: "inline-block",
             }}
-            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold block py-1.5 leading-tight"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold block py-1 leading-tight"
           >
             A Product Designer
           </h2>
 
           <p
-            className="tracking-wide text-sm sm:text-base md:text-lg xl:text-xl text-yellow-100 block py-1.5 leading-snug"
+            className="tracking-wide text-base sm:text-lg md:text-xl xl:text-2xl text-[#1E3A8A] block py-1 leading-snug"
             style={{
               fontFamily: "Duplet",
               fontWeight: 400,
               letterSpacing: "0.3px",
             }}
           >
-            I design products for seamless experience you'll love.
+            I design products for seamless experiences you'll love.
           </p>
         </div>
 
         {/* Right Side - Image */}
-        <div className="w-full md:w-1/2 flex justify-center">
+        <div className="w-full md:w-1/2 flex justify-center mt-8 sm:mt-10 md:mt-12 lg:mt-16">
           <img
             src={myImage}
             alt="Saalim Khan - Product Designer"
-            className="w-40 sm:w-48 md:w-56 lg:w-64 xl:w-120 rounded-xl
-                 sm:mt-4 md:mt-0" // Adjust margin-top for small screens
+            className="w-60 sm:w-72 md:w-80 lg:w-[28rem] xl:w-[32rem] rounded-xl"
           />
         </div>
       </div>
-
-      {/* Scroll Down Indicator - Always Positioned Away from Text */}
-      {/* <div className="absolute bottom-6 sm:bottom-8 md:bottom-10 left-1/2 transform -translate-x-1/2 text-center">
-        <button
-          onClick={scrollToWork}
-          className="flex flex-col items-center animate-bounce cursor-pointer px-4 py-2 rounded-lg transition-all duration-300"
-        >
-          <p className="text-yellow-100 text-xs sm:text-sm md:text-base mb-1 sm:mb-2 font-medium transition-all duration-300 hover:text-yellow-300">
-            Scroll down to see my work
-          </p>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={2}
-            stroke="currentColor"
-            className="w-6 sm:w-8 h-6 sm:h-8 text-yellow-100 transition-all duration-300 hover:text-yellow-300"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M19 9l-7 7-7-7"
-            />
-          </svg>
-        </button>
-      </div> */}
     </section>
   );
 };
