@@ -215,7 +215,7 @@ const Navbar = () => {
                   className={({ isActive }) =>
                     `text-xl tracking-wide block w-full py-2 px-4 rounded-lg mx-auto max-w-xs ${
                       isActive
-                        ? "bg-[#0000FF] text-white font-bold"
+                        ? "bg-[#0000FF] text-blue-600 font-bold"
                         : "text-[#3d382f] hover:bg-[#0000FF11]"
                     } transition-all duration-300`
                   }
