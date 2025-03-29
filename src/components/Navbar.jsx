@@ -117,22 +117,21 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="bg-[#EFECE3] p-6 fixed top-0 left-0 w-full z-50 ">
-      <div className="container mx-auto flex justify-between items-center px-6 relative">
+    <nav className="bg-[#EFECE3] p-4 fixed top-0 left-0 w-full z-50">
+      <div className="container mx-auto flex justify-between items-center px-4 relative">
         {/* Logo with Icon */}
-        <NavLink to="/work" className="flex items-center  group">
+        <NavLink to="/work" className="flex items-center group">
           <motion.div
-            className="w-12 h-12  flex items-center justify-center"
+            className="w-10 h-10 flex items-center justify-center"
             whileHover={{ rotate: 15 }}
           >
-            <FaPaintBrush className="text-2xl text-gray-800" />
+            <FaPaintBrush className="text-xl text-gray-800" />
           </motion.div>
           <h1
-            className="bg-gradient-to-r from-[#3d382f] to-[#5b5347] text-transparent bg-clip-text text-3xl font-bold tracking-wide cursor-pointer"
+            className="bg-gradient-to-r from-[#3d382f] to-[#5b5347] text-transparent bg-clip-text text-2xl font-bold tracking-wide cursor-pointer"
             style={{
               fontFamily: "Duplet",
               fontWeight: "600",
-              fontSize: "1.5rem",
               letterSpacing: "-0.5px",
             }}
           >
@@ -144,7 +143,7 @@ const Navbar = () => {
         <div className="md:hidden z-50">
           {!isOpen && (
             <FiMenu
-              className="text-3xl cursor-pointer text-[#3d382f]"
+              className="text-2xl cursor-pointer text-[#3d382f]"
               onClick={() => setIsOpen(true)}
             />
           )}
@@ -152,15 +151,10 @@ const Navbar = () => {
 
         {/* Desktop Navigation */}
         <ul className="hidden md:flex space-x-6">
-          {[
-            { name: "Work", path: "/work" },
-            { name: "About", path: "/about" },
-            { name: "Resume", path: "/resume" },
-            { name: "Contact", path: "/contact" },
-          ].map((link) => (
-            <li key={link.path}>
+          {["Work", "About", "Resume", "Contact"].map((name) => (
+            <li key={name}>
               <NavLink
-                to={link.path}
+                to={`/${name.toLowerCase()}`}
                 className={({ isActive }) =>
                   `relative pb-2 text-lg tracking-wide group ${
                     isActive
@@ -170,7 +164,7 @@ const Navbar = () => {
                 }
                 style={{ fontFamily: "Duplet" }}
               >
-                {link.name}
+                {name}
                 <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-[#0000FF] transition-all duration-300 group-hover:w-full"></span>
               </NavLink>
             </li>
@@ -183,60 +177,51 @@ const Navbar = () => {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="fixed top-0 left-0 w-full h-screen bg-[#EFECE3] flex flex-col items-center justify-center md:hidden z-40 px-8"
+          className="fixed top-0 left-0 w-full h-full bg-[#EFECE3] flex flex-col items-center justify-start pt-20 md:hidden z-40 px-6"
         >
           {/* Mobile Menu Header */}
-          <div className="w-full flex items-center justify-between py-4 absolute top-0 px-6">
+          <div className="w-full flex items-center justify-between px-4 absolute top-4">
             <div className="flex items-center">
-              <div className="w-12 h-12 flex items-center justify-center">
-                <FaPaintBrush className="text-2xl text-gray-800" />
+              <div className="w-10 h-10 flex items-center justify-center">
+                <FaPaintBrush className="text-xl text-gray-800" />
               </div>
               <h1
-                className="bg-gradient-to-r from-[#3d382f] to-[#5b5347] text-transparent bg-clip-text text-3xl font-bold tracking-wide"
-                style={{
-                  fontFamily: "Duplet",
-                  fontWeight: "600",
-                  fontSize: "1.5rem",
-                }}
+                className="bg-gradient-to-r from-[#3d382f] to-[#5b5347] text-transparent bg-clip-text text-2xl font-bold tracking-wide"
+                style={{ fontFamily: "Duplet", fontWeight: "600" }}
               >
                 Saalim
               </h1>
             </div>
 
             <FiX
-              className="text-3xl cursor-pointer text-[#3d382f]"
+              className="text-2xl cursor-pointer text-[#3d382f]"
               onClick={() => setIsOpen(false)}
             />
           </div>
 
           {/* Mobile Menu Items */}
-          <ul className="flex flex-col space-y-8 text-center w-full">
-            {[
-              { name: "Work", path: "/work" },
-              { name: "About", path: "/about" },
-              { name: "Resume", path: "/resume" },
-              { name: "Contact", path: "/contact" },
-            ].map((link, index) => (
+          <ul className="flex flex-col space-y-6 text-center w-full mt-8">
+            {["Work", "About", "Resume", "Contact"].map((name, index) => (
               <motion.li
-                key={link.path}
-                initial={{ y: 20, opacity: 0 }}
+                key={name}
+                initial={{ y: 10, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: index * 0.1 }}
                 className="w-full"
               >
                 <NavLink
-                  to={link.path}
+                  to={`/${name.toLowerCase()}`}
                   onClick={() => setIsOpen(false)}
                   className={({ isActive }) =>
-                    `text-2xl tracking-wide block w-full py-3 px-6 rounded-lg mx-auto max-w-xs ${
+                    `text-xl tracking-wide block w-full py-2 px-4 rounded-lg mx-auto max-w-xs ${
                       isActive
-                        ? "bg-[#0000FF] text-blue-600 font-bold"
+                        ? "bg-[#0000FF] text-white font-bold"
                         : "text-[#3d382f] hover:bg-[#0000FF11]"
                     } transition-all duration-300`
                   }
                   style={{ fontFamily: "Duplet" }}
                 >
-                  {link.name}
+                  {name}
                 </NavLink>
               </motion.li>
             ))}
@@ -246,5 +231,4 @@ const Navbar = () => {
     </nav>
   );
 };
-
 export default Navbar;
