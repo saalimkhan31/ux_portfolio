@@ -2,64 +2,112 @@ import { useState, useEffect } from "react";
 import myImage from "../assets/images/myImage.png";
 
 export default function Footer() {
-  const [showContact, setShowContact] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => {
-      const screenWidth = window.innerWidth;
-      setShowContact(screenWidth >= 200 && screenWidth <= 767); // Show between 200px - 767px
-    };
-
-    handleResize(); // Check on mount
-    window.addEventListener("resize", handleResize);
-
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  const [isMobile, setIsMobile] = useState(false);
 
   return (
-    <footer className="bg-[#EFECE3] border-t-[1px] border-[#0000FF] flex flex-col sm:flex-row items-center justify-between px-4 sm:px-6 md:px-8 lg:px-10 py-4 sm:py-6 text-center w-full space-y-4 sm:space-y-0">
-      {/* Left Side - Image & Name */}
-      <div className="flex items-center space-x-3">
-        <div className="w-12 h-12 p-[3px] rounded-[100px] bg-gradient-to-r from-[#3d382f] to-[#c5b59d]">
-          <img
-            src={myImage}
-            alt="Saalim Khan"
-            className="w-full h-full rounded-[100px] object-cover p-1"
-          />
+    <footer className="min-h-[300px] bg-gradient-to-br from-[#EFECE3]  border-t-1 border-[#0000FF] text-[#3D382F]">
+      <div className="max-w-7xl mx-auto px-8 py-12">
+        {/* Main Footer Content - 4 Columns */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+          {/* Logo Section */}
+          <div className="flex flex-col space-y-4">
+            <div className="flex items-center space-x-3">
+              <div className="w-16 h-16 p-1 rounded-full bg-gradient-to-r from-[#3d382f] to-[#c5b59d]">
+                <img
+                  src={myImage}
+                  alt="Saalim Khan"
+                  className="w-full h-full rounded-full object-cover"
+                />
+              </div>
+              <h1
+                className="text-2xl font-bold bg-gradient-to-r from-[#3d382f] to-[#5b5347] text-transparent bg-clip-text"
+                style={{ fontFamily: "Duplet" }}
+              >
+                Saalim Khan
+              </h1>
+            </div>
+            <p className="text-sm opacity-80" style={{ fontFamily: "Duplet" }}>
+              Creating digital experiences that merge aesthetics with
+              functionality.
+            </p>
+          </div>
+
+          {/* Explore Section */}
+          <div className="flex flex-col space-y-3">
+            <h2
+              className="text-lg font-semibold mb-2"
+              style={{ fontFamily: "Duplet" }}
+            >
+              Explore
+            </h2>
+            {["Projects", "About", "Resume"].map((link) => (
+              <a
+                key={link}
+                href="#"
+                className="hover:text-[#0000FF] transition-colors text-sm"
+                style={{ fontFamily: "Duplet" }}
+              >
+                {link}
+              </a>
+            ))}
+          </div>
+
+          {/* Connect Section */}
+          <div className="flex flex-col space-y-3">
+            <h2
+              className="text-lg font-semibold mb-2"
+              style={{ fontFamily: "Duplet" }}
+            >
+              Connect
+            </h2>
+            <a
+              href="mailto:hello@example.com"
+              className="text-sm hover:text-[#0000FF] transition-colors"
+              style={{ fontFamily: "Duplet" }}
+            >
+              ✉️ hello@example.com
+            </a>
+            <p className="text-sm" style={{ fontFamily: "Duplet" }}>
+              📍 Based in Mumbai
+            </p>
+          </div>
+
+          {/* Links Section */}
+          <div className="flex flex-col space-y-3">
+            <h2
+              className="text-lg font-semibold mb-2"
+              style={{ fontFamily: "Duplet" }}
+            >
+              Links
+            </h2>
+            {["LinkedIn", "Dribbble", "Behance"].map((platform) => (
+              <a
+                key={platform}
+                href="#"
+                className="text-sm hover:text-[#0000FF] transition-colors"
+                style={{ fontFamily: "Duplet" }}
+              >
+                {platform}
+              </a>
+            ))}
+          </div>
         </div>
-        <h1
-          className="bg-gradient-to-r from-[#3d382f] to-[#5b5347] text-transparent bg-clip-text text-3xl font-bold tracking-wide cursor-pointer"
-          style={{
-            fontFamily: "Duplet",
-            fontWeight: "600",
-            fontSize: "1.5rem",
-          }}
-        >
-          Saalim
-        </h1>
-      </div>
 
-      {/* Right Side - Social Buttons + Contact Button */}
-      <div className="flex flex-wrap justify-center sm:justify-end gap-2 sm:gap-4">
-        {["LinkedIn", "GitHub", "Behance"].map((platform) => (
-          <button
-            key={platform}
-            style={{ fontFamily: "Duplet" }}
-            className="text-[#0000FF] text-xs sm:text-sm md:text-base font-medium px-3 sm:px-4 md:px-5 py-1 sm:py-2 border border-[#0000FF] rounded-lg transition-all transform hover:scale-105 hover:bg-[#C5B59D] hover:text-[#3D382F] focus:ring-2 focus:ring-blue-500 focus:outline-none"
-          >
-            {platform}
-          </button>
-        ))}
+        {/* Bottom Bar */}
+        <div className="border-t border-[#0000FF] pt-6 flex flex-col md:flex-row justify-between items-center">
+          <div className="flex space-x-4 mb-4 md:mb-0">
+            <p className="text-sm" style={{ fontFamily: "Duplet" }}>
+              Copyright © 2025 Saalim Khan
+            </p>
+          </div>
 
-        {/* Contact Button (Only Visible Between 200px - 767px) */}
-        {showContact && (
-          <button
-            style={{ fontFamily: "Duplet" }}
-            className="text-[#0000FF] text-xs sm:text-sm md:text-base font-medium px-3 sm:px-4 md:px-5 py-1 sm:py-2 border border-[#0000FF] rounded-lg transition-all transform hover:scale-105 hover:bg-[#0000FF] hover:text-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
-          >
-            Contact
-          </button>
-        )}
+          <div className="flex items-center space-x-2">
+            <span className="text-xs" style={{ fontFamily: "Duplet" }}>
+              Developed with ❤️ using React & Tailwind
+            </span>
+            <div className="w-4 h-4 bg-[#0000FF] rounded-full"></div>
+          </div>
+        </div>
       </div>
     </footer>
   );
