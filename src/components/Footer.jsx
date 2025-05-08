@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import myImage from "../assets/images/myImage.png";
-
+import { NavLink } from "react-router-dom";
+import { FiMenu, FiX } from "react-icons/fi";
+import { FaPaintBrush } from "react-icons/fa";
+import { motion } from "framer-motion";
 export default function Footer() {
   const [isMobile, setIsMobile] = useState(false);
 
@@ -12,19 +15,24 @@ export default function Footer() {
           {/* Logo Section */}
           <div className="flex flex-col space-y-4">
             <div className="flex items-center space-x-3">
-              <div className="w-16 h-16 p-1 rounded-full bg-gradient-to-r from-[#3d382f] to-[#c5b59d]">
-                <img
-                  src={myImage}
-                  alt="Saalim Khan"
-                  className="w-full h-full rounded-full object-cover"
-                />
-              </div>
-              <h1
-                className="text-2xl font-bold bg-gradient-to-r from-[#3d382f] to-[#5b5347] text-transparent bg-clip-text"
-                style={{ fontFamily: "Duplet" }}
-              >
-                Saalim Khan
-              </h1>
+              <NavLink to="/work" className="flex items-center group">
+                <motion.div
+                  className="w-10 h-10 flex items-center justify-center"
+                  whileHover={{ rotate: 15 }}
+                >
+                  <FaPaintBrush className="text-xl text-gray-800" />
+                </motion.div>
+                <h1
+                  className="bg-gradient-to-r from-[#3d382f] to-[#5b5347] text-transparent bg-clip-text text-2xl font-bold tracking-wide cursor-pointer"
+                  style={{
+                    fontFamily: "Duplet",
+                    fontWeight: "600",
+                    letterSpacing: "-0.5px",
+                  }}
+                >
+                  Saalim
+                </h1>
+              </NavLink>
             </div>
             <p className="text-sm opacity-80" style={{ fontFamily: "Duplet" }}>
               Creating digital experiences that merge aesthetics with
@@ -68,7 +76,7 @@ export default function Footer() {
               ✉️ hello@example.com
             </a>
             <p className="text-sm" style={{ fontFamily: "Duplet" }}>
-              📍 Based in Mumbai
+              📍 Based in Nagpur
             </p>
           </div>
 

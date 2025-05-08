@@ -39,7 +39,7 @@ export default function AboutMe() {
                 className="text-base md:text-lg text-blue-800"
                 style={{ fontFamily: "Duplet", fontWeight: 500 }}
               >
-                Based in Mumbai, India
+                Based in Nagpur, India
               </p>
             </div>
 
