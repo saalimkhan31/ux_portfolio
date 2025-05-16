@@ -34,6 +34,81 @@
   font-style: normal;
 }
 * {
-  background-color: #efece3;
-  color: 0000FF;
+  background-color: #ffffff;
+  /* color: 0000FF; */
+}
+
+@media (min-width: 768px) and (max-width: 1390px) {
+  .pt-between-md-lg {
+    padding-top: 1rem; /* 1rem = 16px */
+  }
+}
+
+/* buton css */
+/* Button wrapper - centered */
+.scroll-button-wrapper {
+  position: absolute;
+  bottom: 5.5rem;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  z-index: 20;
+}
+
+/* Button style */
+.scroll-button {
+  animation: bounceGlow 2s infinite;
+  background-color: white;
+  color: #0000ff;
+  padding: 0.4rem 1rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  border: 2px solid white;
+  font-family: "Duplet", sans-serif;
+  font-size: 0.875rem;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 0 8px rgba(0, 0, 255, 0.3);
+}
+
+.scroll-button:hover {
+  background-color: white;
+  cursor: pointer;
+}
+
+/* Responsive adjustments */
+@media (max-width: 860px) and (min-width: 280px) {
+  .scroll-button-wrapper {
+    margin-top: 1rem;
+  }
+
+  .scroll-button {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.8rem;
+  }
+}
+
+/* Bounce + wave glow animation */
+@keyframes bounceGlow {
+  0%,
+  100% {
+    transform: translateY(0);
+    box-shadow: 0 0 8px rgba(162, 162, 229, 0.3),
+      0 0 16px rgba(146, 146, 196, 0.2), 0 0 24px rgba(162, 162, 222, 0.1);
+  }
+
+  50% {
+    transform: translateY(-8px);
+    border-color: #adadeb;
+    border-width: 0.2px;
+    box-shadow: 0 0 12px rgba(109, 109, 170, 0.6),
+      0 0 20px rgba(110, 110, 210, 0.4), 0 0 30px rgba(100, 100, 192, 0.2);
+  }
+}
+
+/* end */
+
+@media (max-width: 440px) {
+  .flex-wrap-below-440 {
+    flex-wrap: wrap;
+  }
 }

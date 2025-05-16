@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 
 const Work = () => {
   return (
-    <div className="bg-[#EFECE3] min-h-screen">
+    <div className="min-h-screen">
       <HomePage />
 
       <Footer />
