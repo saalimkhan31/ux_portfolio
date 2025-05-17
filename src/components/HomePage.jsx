@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import myImage from "../assets/images/1-home.png";
+import myImage from "../assets/images/myImage.png";
 
 import { FaFigma, FaSketch } from "react-icons/fa";
 import { SiMiro, SiNotion } from "react-icons/si";
@@ -17,10 +17,12 @@ const SkillItem = ({ icon, name }) => (
 const HomePage = () => {
   const headingRef = useRef(null);
   const subheadingRef = useRef(null);
+
   const imageRef = useRef(null);
   const linesRef = useRef(null);
 
   useEffect(() => {
+    // Animate the image
     gsap.from(imageRef.current, {
       opacity: 0,
       y: 50,
@@ -29,6 +31,7 @@ const HomePage = () => {
       ease: "power3.out",
     });
 
+    // Animate SVG lines (black stroke)
     gsap.fromTo(
       linesRef.current.querySelectorAll("path"),
       {
@@ -39,7 +42,7 @@ const HomePage = () => {
       {
         strokeDashoffset: 0,
         opacity: 1,
-        stroke: "#000",
+        stroke: "#000", // force black stroke
         duration: 1.5,
         ease: "power2.out",
         stagger: 0.2,
@@ -54,7 +57,8 @@ const HomePage = () => {
       title: "BookMyGround",
       description:
         "UX process highlights, wireframes, prototypes & design solutions.",
-      image: { myImage },
+      image:
+        "https://images.pexels.com/photos/392018/pexels-photo-392018.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       link: "https://www.behance.net/gallery/195243479/Bookmyground-Online-Ground-and-turf-booking-website",
     },
     {
@@ -67,7 +71,7 @@ const HomePage = () => {
     },
     {
       id: 3,
-      title: "Dashboard",
+      title: "Dashbaord",
       description: "Project three description here.",
       image:
         "https://images.pexels.com/photos/392018/pexels-photo-392018.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
@@ -77,11 +81,13 @@ const HomePage = () => {
 
   return (
     <>
-      {/* Hero Section */}
-      <section className="relative bg-[#EFECE3] text-[#0000FF] min-h-[100vh] flex items-center justify-center px-4 sm:px-6 md:px-12 lg:px-16 pt-12 sm:pt-12 md:pt-16 lg:pt-20 pb-16 sm:pb-20 md:pb-24">
+      <section
+        className="relative bg-[#EFECE3] text-[#0000FF] min-h-[100vh] flex items-center justify-center px-4 sm:px-6 md:px-12 lg:px-16 pt-12 sm:pt-12 md:pt-16 lg:pt-20 pb-16 sm:pb-20 md:pb-24"
+        // Increased bottom padding here (pb-16, pb-20, pb-24 for responsiveness)
+      >
         <div className="container mx-auto flex flex-col-reverse md:flex-row items-center md:gap-10">
-          {/* Left: Text */}
-          <div className="w-full md:w-1/2 text-center md:text-left pl-2 sm:pl-4 md:pl-6">
+          {/* Left Side - Text */}
+          <div className="w-full md:w-1/2 text-center md:text-left pl-2 sm:pl-4 md:pl-6 pt-between-md-lg">
             <h1
               ref={headingRef}
               className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight block py-1"
@@ -98,8 +104,9 @@ const HomePage = () => {
               UX designer crafting delightful visuals & functional interfaces.
             </h2>
 
-            {/* Design Tools */}
-            <div className="bg-white pt-6 pb-10 rounded-xl md:mx-0 flex gap-6 justify-center md:justify-start flex-wrap mt-6">
+            {/* Design Tools box below text */}
+            <div className="bg-white pt-6 pb-10 rounded-xl md:mx-0 flex gap-6 justify-center md:justify-start flex-wrap-below-440">
+              {/* icons */}
               <SkillItem
                 icon={<FaFigma className="w-6 h-6 text-purple-600" />}
                 name="Figma"
@@ -119,7 +126,8 @@ const HomePage = () => {
             </div>
           </div>
 
-          {/* Right: Image & SVG Lines */}
+          {/* Right Side - Image with Background Lines */}
+          {/* Right Side - Image with Background Lines */}
           <div className="w-full md:w-1/2 flex justify-center mt-8 sm:mt-10 md:mt-12 lg:mt-16 relative">
             <svg
               ref={linesRef}
@@ -155,16 +163,15 @@ const HomePage = () => {
           </div>
         </div>
 
-        {/* Scroll Button */}
-        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2">
+        {/* Scroll Down Button */}
+        <div className="scroll-button-wrapper">
           <button
             onClick={() =>
               document
                 .querySelector("#projects-section")
                 .scrollIntoView({ behavior: "smooth" })
             }
-            className="bg-[#0000FF] text-white px-6 py-2 rounded-full hover:bg-[#000099] transition font-medium"
-            style={{ fontFamily: "Duplet" }}
+            className="scroll-button"
           >
             ↓ Scroll to Projects
           </button>
@@ -185,11 +192,13 @@ const HomePage = () => {
           </h2>
         </div>
 
+        {/* Cards Grid */}
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map(({ id, title, description, image, link }) => (
             <div
               key={id}
               className="relative group bg-white rounded-3xl shadow-xl overflow-hidden transition-transform duration-300 hover:scale-[1.03] hover:bg-blue-50"
+              // added hover:bg-blue-50 for a subtle light blue background on hover
             >
               <div className="relative overflow-hidden rounded-t-3xl">
                 <img
@@ -202,7 +211,7 @@ const HomePage = () => {
                     href={link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-white text-[#0000FF] border border-[#0000FF] hover:bg-[#0000FF] hover:text-white px-5 py-2 rounded-full font-medium transition duration-300"
+                    className="bg-white text-[#0000FF] border border-[#0000FF] hover:bg-[#0000FF] hover:text-[#303062] px-5 py-2 rounded-full font-medium transition duration-300"
                     style={{ fontFamily: "Duplet" }}
                   >
                     View Project
@@ -212,13 +221,13 @@ const HomePage = () => {
 
               <div className="p-6 sm:p-8">
                 <h3
-                  className="text-xl sm:text-2xl font-semibold mb-2 group-hover:text-[#0000FF] transition"
+                  className="text-xl sm:text-2xl font-semibold mb-2 transition-colors duration-300 group-hover:text-[#0000FF]"
                   style={{ fontFamily: "Duplet" }}
                 >
                   {title}
                 </h3>
                 <p
-                  className="text-base text-gray-700 leading-relaxed"
+                  className="text-base text-gray-700 opacity-90 leading-relaxed"
                   style={{ fontFamily: "Duplet" }}
                 >
                   {description}
