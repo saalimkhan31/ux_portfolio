@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import myImage from "../assets/images/myImage.png";
+import myImage from "../assets/images/1-home.png";
 
 import { FaFigma, FaSketch } from "react-icons/fa";
 import { SiMiro, SiNotion } from "react-icons/si";
@@ -17,54 +17,44 @@ const SkillItem = ({ icon, name }) => (
 const HomePage = () => {
   const headingRef = useRef(null);
   const subheadingRef = useRef(null);
+  const imageRef = useRef(null);
+  const linesRef = useRef(null);
 
   useEffect(() => {
-    const headingText = headingRef.current.textContent;
-    const subheadingText = subheadingRef.current.textContent;
+    gsap.from(imageRef.current, {
+      opacity: 0,
+      y: 50,
+      scale: 0.95,
+      duration: 1.2,
+      ease: "power3.out",
+    });
 
-    headingRef.current.innerHTML = headingText
-      .split("")
-      .map((char) => `<span class="char">${char}</span>`)
-      .join("");
-
-    subheadingRef.current.innerHTML = subheadingText
-      .split("")
-      .map((char) => `<span class="char">${char}</span>`)
-      .join("");
-
-    const tl = gsap.timeline();
-
-    tl.fromTo(
-      headingRef.current.querySelectorAll(".char"),
-      { opacity: 0, y: 20 },
+    gsap.fromTo(
+      linesRef.current.querySelectorAll("path"),
       {
-        opacity: 1,
-        y: 0,
-        stagger: 0.05,
-        duration: 0.4,
-        ease: "power2.out",
-      }
-    ).fromTo(
-      subheadingRef.current.querySelectorAll(".char"),
-      { opacity: 0, y: 20 },
-      {
-        opacity: 1,
-        y: 0,
-        stagger: 0.03,
-        duration: 0.3,
-        ease: "power2.out",
+        strokeDasharray: 500,
+        strokeDashoffset: 500,
+        opacity: 0,
       },
-      "-=0.3"
+      {
+        strokeDashoffset: 0,
+        opacity: 1,
+        stroke: "#000",
+        duration: 1.5,
+        ease: "power2.out",
+        stagger: 0.2,
+        delay: 0.2,
+      }
     );
   }, []);
+
   const projects = [
     {
       id: 1,
       title: "BookMyGround",
       description:
         "UX process highlights, wireframes, prototypes & design solutions.",
-      image:
-        "https://images.pexels.com/photos/392018/pexels-photo-392018.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      image: { myImage },
       link: "https://www.behance.net/gallery/195243479/Bookmyground-Online-Ground-and-turf-booking-website",
     },
     {
@@ -77,7 +67,7 @@ const HomePage = () => {
     },
     {
       id: 3,
-      title: "Dashbaord",
+      title: "Dashboard",
       description: "Project three description here.",
       image:
         "https://images.pexels.com/photos/392018/pexels-photo-392018.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
@@ -87,13 +77,11 @@ const HomePage = () => {
 
   return (
     <>
-      <section
-        className="relative bg-[#EFECE3] text-[#0000FF] min-h-[100vh] flex items-center justify-center px-4 sm:px-6 md:px-12 lg:px-16 pt-12 sm:pt-12 md:pt-16 lg:pt-20 pb-16 sm:pb-20 md:pb-24"
-        // Increased bottom padding here (pb-16, pb-20, pb-24 for responsiveness)
-      >
+      {/* Hero Section */}
+      <section className="relative bg-[#EFECE3] text-[#0000FF] min-h-[100vh] flex items-center justify-center px-4 sm:px-6 md:px-12 lg:px-16 pt-12 sm:pt-12 md:pt-16 lg:pt-20 pb-16 sm:pb-20 md:pb-24">
         <div className="container mx-auto flex flex-col-reverse md:flex-row items-center md:gap-10">
-          {/* Left Side - Text */}
-          <div className="w-full md:w-1/2 text-center md:text-left pl-2 sm:pl-4 md:pl-6 pt-between-md-lg">
+          {/* Left: Text */}
+          <div className="w-full md:w-1/2 text-center md:text-left pl-2 sm:pl-4 md:pl-6">
             <h1
               ref={headingRef}
               className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight block py-1"
@@ -110,9 +98,8 @@ const HomePage = () => {
               UX designer crafting delightful visuals & functional interfaces.
             </h2>
 
-            {/* Design Tools box below text */}
-            <div className="bg-white pt-6 pb-10 rounded-xl md:mx-0 flex gap-6 justify-center md:justify-start flex-wrap-below-440">
-              {/* icons */}
+            {/* Design Tools */}
+            <div className="bg-white pt-6 pb-10 rounded-xl md:mx-0 flex gap-6 justify-center md:justify-start flex-wrap mt-6">
               <SkillItem
                 icon={<FaFigma className="w-6 h-6 text-purple-600" />}
                 name="Figma"
@@ -132,11 +119,11 @@ const HomePage = () => {
             </div>
           </div>
 
-          {/* Right Side - Image with Background Lines */}
-          {/* Right Side - Image with Background Lines */}
+          {/* Right: Image & SVG Lines */}
           <div className="w-full md:w-1/2 flex justify-center mt-8 sm:mt-10 md:mt-12 lg:mt-16 relative">
             <svg
-              className="absolute inset-0 w-full h-full -z-10 opacity-40"
+              ref={linesRef}
+              className="absolute inset-0 w-full h-full -z-10 opacity-100"
               xmlns="http://www.w3.org/2000/svg"
               preserveAspectRatio="none"
               fill="none"
@@ -144,25 +131,23 @@ const HomePage = () => {
             >
               <path
                 d="M0,50 C150,100 350,0 500,50"
-                stroke="#1E3A8A" // Tailwind blue-900
                 strokeWidth="1"
                 fill="transparent"
               />
               <path
                 d="M0,150 C150,200 350,100 500,150"
-                stroke="#1E3A8A"
                 strokeWidth="1"
                 fill="transparent"
               />
               <path
                 d="M0,250 C150,300 350,200 500,250"
-                stroke="#1E3A8A"
                 strokeWidth="1"
                 fill="transparent"
               />
             </svg>
 
             <img
+              ref={imageRef}
               src={myImage}
               alt="Saalim Khan - Product Designer"
               className="w-60 sm:w-72 md:w-80 lg:w-[28rem] xl:w-[32rem] rounded-xl relative z-10"
@@ -170,15 +155,16 @@ const HomePage = () => {
           </div>
         </div>
 
-        {/* Scroll Down Button */}
-        <div className="scroll-button-wrapper">
+        {/* Scroll Button */}
+        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2">
           <button
             onClick={() =>
               document
                 .querySelector("#projects-section")
                 .scrollIntoView({ behavior: "smooth" })
             }
-            className="scroll-button"
+            className="bg-[#0000FF] text-white px-6 py-2 rounded-full hover:bg-[#000099] transition font-medium"
+            style={{ fontFamily: "Duplet" }}
           >
             ↓ Scroll to Projects
           </button>
@@ -199,13 +185,11 @@ const HomePage = () => {
           </h2>
         </div>
 
-        {/* Cards Grid */}
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map(({ id, title, description, image, link }) => (
             <div
               key={id}
               className="relative group bg-white rounded-3xl shadow-xl overflow-hidden transition-transform duration-300 hover:scale-[1.03] hover:bg-blue-50"
-              // added hover:bg-blue-50 for a subtle light blue background on hover
             >
               <div className="relative overflow-hidden rounded-t-3xl">
                 <img
@@ -218,7 +202,7 @@ const HomePage = () => {
                     href={link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-white text-[#0000FF] border border-[#0000FF] hover:bg-[#0000FF] hover:text-[#303062] px-5 py-2 rounded-full font-medium transition duration-300"
+                    className="bg-white text-[#0000FF] border border-[#0000FF] hover:bg-[#0000FF] hover:text-white px-5 py-2 rounded-full font-medium transition duration-300"
                     style={{ fontFamily: "Duplet" }}
                   >
                     View Project
@@ -228,13 +212,13 @@ const HomePage = () => {
 
               <div className="p-6 sm:p-8">
                 <h3
-                  className="text-xl sm:text-2xl font-semibold mb-2 transition-colors duration-300 group-hover:text-[#0000FF]"
+                  className="text-xl sm:text-2xl font-semibold mb-2 group-hover:text-[#0000FF] transition"
                   style={{ fontFamily: "Duplet" }}
                 >
                   {title}
                 </h3>
                 <p
-                  className="text-base text-gray-700 opacity-90 leading-relaxed"
+                  className="text-base text-gray-700 leading-relaxed"
                   style={{ fontFamily: "Duplet" }}
                 >
                   {description}
