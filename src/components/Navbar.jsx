@@ -16,15 +16,6 @@ const Navbar = () => {
         <LuLayoutDashboard className="text-3xl" />
       </motion.div>
       <div className="flex flex-col ml-2 leading-tight">
-        <span
-          className="text-sm font-medium text-[#0000FF]"
-          style={{
-            fontFamily: "'Anton', sans-serif",
-            letterSpacing: "0.5px",
-          }}
-        >
-          UX
-        </span>
         <motion.h1
           className="bg-gradient-to-r from-[#0000FF] to-[#0000FF] text-transparent bg-clip-text text-2xl md:text-3xl font-bold tracking-wide"
           style={{

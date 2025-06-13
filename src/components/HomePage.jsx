@@ -17,20 +17,9 @@ const SkillItem = ({ icon, name }) => (
 const HomePage = () => {
   const headingRef = useRef(null);
   const subheadingRef = useRef(null);
-
-  const imageRef = useRef(null);
   const linesRef = useRef(null);
 
   useEffect(() => {
-    // Animate the image
-    gsap.from(imageRef.current, {
-      opacity: 0,
-      y: 50,
-      scale: 0.95,
-      duration: 1.2,
-      ease: "power3.out",
-    });
-
     // Animate SVG lines (black stroke)
     gsap.fromTo(
       linesRef.current.querySelectorAll("path"),
@@ -42,7 +31,7 @@ const HomePage = () => {
       {
         strokeDashoffset: 0,
         opacity: 1,
-        stroke: "#000", // force black stroke
+        stroke: "#000",
         duration: 1.5,
         ease: "power2.out",
         stagger: 0.2,
@@ -81,10 +70,7 @@ const HomePage = () => {
 
   return (
     <>
-      <section
-        className="relative bg-[#EFECE3] text-[#0000FF] min-h-[100vh] flex items-center justify-center px-4 sm:px-6 md:px-12 lg:px-16 pt-12 sm:pt-12 md:pt-16 lg:pt-20 pb-16 sm:pb-20 md:pb-24"
-        // Increased bottom padding here (pb-16, pb-20, pb-24 for responsiveness)
-      >
+      <section className="relative bg-[#EFECE3] text-[#0000FF] min-h-[100vh] flex items-center justify-center px-4 sm:px-6 md:px-12 lg:px-16 pt-12 sm:pt-12 md:pt-16 lg:pt-20 pb-16 sm:pb-20 md:pb-24">
         <div className="container mx-auto flex flex-col-reverse md:flex-row items-center md:gap-10">
           {/* Left Side - Text */}
           <div className="w-full md:w-1/2 text-center md:text-left pl-2 sm:pl-4 md:pl-6 pt-between-md-lg">
@@ -106,7 +92,6 @@ const HomePage = () => {
 
             {/* Design Tools box below text */}
             <div className="bg-white pt-6 pb-10 rounded-xl md:mx-0 flex gap-6 justify-center md:justify-start flex-wrap-below-440">
-              {/* icons */}
               <SkillItem
                 icon={<FaFigma className="w-6 h-6 text-purple-600" />}
                 name="Figma"
@@ -126,7 +111,6 @@ const HomePage = () => {
             </div>
           </div>
 
-          {/* Right Side - Image with Background Lines */}
           {/* Right Side - Image with Background Lines */}
           <div className="w-full md:w-1/2 flex justify-center mt-8 sm:mt-10 md:mt-12 lg:mt-16 relative">
             <svg
@@ -155,7 +139,6 @@ const HomePage = () => {
             </svg>
 
             <img
-              ref={imageRef}
               src={myImage}
               alt="Saalim Khan - Product Designer"
               className="w-60 sm:w-72 md:w-80 lg:w-[28rem] xl:w-[32rem] rounded-xl relative z-10"
@@ -198,7 +181,6 @@ const HomePage = () => {
             <div
               key={id}
               className="relative group bg-white rounded-3xl shadow-xl overflow-hidden transition-transform duration-300 hover:scale-[1.03] hover:bg-blue-50"
-              // added hover:bg-blue-50 for a subtle light blue background on hover
             >
               <div className="relative overflow-hidden rounded-t-3xl">
                 <img

@@ -28,7 +28,7 @@ export default function Resume() {
         <p>
           See My Cv/Resume,{" "}
           <a
-            href="https://drive.google.com/file/d/1SnOBMV-OWpZlnv8W5v3fCj031gxBMFLD/view"
+            href="https://drive.google.com/file/d/1P-m1iRt_u43ejRbAXtXxESBjAu-Pxt4V/view?usp=drive_link"
             target="_blank"
             rel="noopener noreferrer"
             className="text-blue-600 underline"
