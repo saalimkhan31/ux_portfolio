@@ -48,7 +48,7 @@ const HomePage = () => {
         "UX process highlights, wireframes, prototypes & design solutions.",
       image:
         "https://images.pexels.com/photos/392018/pexels-photo-392018.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-      link: "https://www.behance.net/gallery/195243479/Bookmyground-Online-Ground-and-turf-booking-website",
+      link: "https://telary.studio/work/everchron/",
     },
     {
       id: 2,
